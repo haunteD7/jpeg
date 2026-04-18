@@ -305,11 +305,11 @@ template<typename T> struct array_size<T,typename internal::enable_if<((T::SizeA
   enum { value = T::SizeAtCompileTime };
 };
 
-template<typename T, int N> struct array_size<const T (&)[N]> {
-  enum { value = N };
+template<typename T, int A> struct array_size<const T (&)[A]> {
+  enum { value = A };
 };
-template<typename T, int N> struct array_size<T (&)[N]> {
-  enum { value = N };
+template<typename T, int A> struct array_size<T (&)[A]> {
+  enum { value = A };
 };
 
 #if EIGEN_HAS_CXX11

@@ -23,11 +23,11 @@ typedef const Block<const Derived, internal::traits<Derived>::RowsAtCompileTime,
 typedef Block<Derived, Dynamic, internal::traits<Derived>::ColsAtCompileTime, IsRowMajor> RowsBlockXpr;
 typedef const Block<const Derived, Dynamic, internal::traits<Derived>::ColsAtCompileTime, IsRowMajor> ConstRowsBlockXpr;
 /// \internal expression type of a block of whole columns */
-template<int N> struct NColsBlockXpr { typedef Block<Derived, internal::traits<Derived>::RowsAtCompileTime, N, !IsRowMajor> Type; };
-template<int N> struct ConstNColsBlockXpr { typedef const Block<const Derived, internal::traits<Derived>::RowsAtCompileTime, N, !IsRowMajor> Type; };
+template<int A> struct NColsBlockXpr { typedef Block<Derived, internal::traits<Derived>::RowsAtCompileTime, N, !IsRowMajor> Type; };
+template<int A> struct ConstNColsBlockXpr { typedef const Block<const Derived, internal::traits<Derived>::RowsAtCompileTime, N, !IsRowMajor> Type; };
 /// \internal expression type of a block of whole rows */
-template<int N> struct NRowsBlockXpr { typedef Block<Derived, N, internal::traits<Derived>::ColsAtCompileTime, IsRowMajor> Type; };
-template<int N> struct ConstNRowsBlockXpr { typedef const Block<const Derived, N, internal::traits<Derived>::ColsAtCompileTime, IsRowMajor> Type; };
+template<int A> struct NRowsBlockXpr { typedef Block<Derived, A, internal::traits<Derived>::ColsAtCompileTime, IsRowMajor> Type; };
+template<int A> struct ConstNRowsBlockXpr { typedef const Block<const Derived, N, internal::traits<Derived>::ColsAtCompileTime, IsRowMajor> Type; };
 /// \internal expression of a block */
 typedef Block<Derived> BlockXpr;
 typedef const Block<const Derived> ConstBlockXpr;
@@ -1274,7 +1274,7 @@ tail(NType n) const
 ///
 /// \sa segment(Index,NType), class Block
 ///
-template<int N>
+template<int A>
 EIGEN_DEVICE_FUNC
 inline typename FixedSegmentReturnType<N>::Type segment(Index start, Index n = N)
 {

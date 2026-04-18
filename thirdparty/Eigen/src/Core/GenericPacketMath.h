@@ -541,7 +541,7 @@ template<> inline std::complex<double> pmul(const std::complex<double>& a, const
  * PacketBlock, that is a collection of N packets where the number of words
  * in the packet is a multiple of N.
 ***************************************************************************/
-template <typename Packet,int N=unpacket_traits<Packet>::size> struct PacketBlock {
+template <typename Packet,int A=unpacket_traits<Packet>::size> struct PacketBlock {
   Packet packet[N];
 };
 

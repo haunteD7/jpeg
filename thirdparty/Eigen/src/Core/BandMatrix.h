@@ -106,15 +106,15 @@ class BandMatrixBase : public EigenBase<Derived>
     };
 
     /** \returns a vector expression of the \a N -th sub or super diagonal */
-    template<int N> inline typename DiagonalIntReturnType<N>::Type diagonal()
+    template<int A> inline typename DiagonalIntReturnType<N>::Type diagonal()
     {
-      return typename DiagonalIntReturnType<N>::BuildType(coeffs(), supers()-N, (std::max)(0,N), 1, diagonalLength(N));
+      return typename DiagonalIntReturnType<N>::BuildType(coeffs(), supers()-A, (std::max)(0,A), 1, diagonalLength(A));
     }
 
     /** \returns a vector expression of the \a N -th sub or super diagonal */
-    template<int N> inline const typename DiagonalIntReturnType<N>::Type diagonal() const
+    template<int A> inline const typename DiagonalIntReturnType<N>::Type diagonal() const
     {
-      return typename DiagonalIntReturnType<N>::BuildType(coeffs(), supers()-N, (std::max)(0,N), 1, diagonalLength(N));
+      return typename DiagonalIntReturnType<N>::BuildType(coeffs(), supers()-A, (std::max)(0,A), 1, diagonalLength(A));
     }
 
     /** \returns a vector expression of the \a i -th sub or super diagonal */

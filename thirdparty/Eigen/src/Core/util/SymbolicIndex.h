@@ -60,8 +60,8 @@ protected:
 
 // Specialization for compile-time value,
 // It is similar to ValueExpr(N) but this version helps the compiler to generate better code.
-template<int N>
-class ValueExpr<internal::FixedInt<N> > {
+template<int A>
+class ValueExpr<internal::FixedInt<A> > {
 public:
   ValueExpr() {}
   template<typename T>
@@ -113,57 +113,57 @@ public:
   friend QuotientExpr<ValueExpr<>,Derived> operator/(Index a, const BaseExpr& b)
   { return QuotientExpr<ValueExpr<>,Derived>(a,b.derived()); }
 
-  template<int N>
-  AddExpr<Derived,ValueExpr<internal::FixedInt<N> > > operator+(internal::FixedInt<N>) const
+  template<int A>
+  AddExpr<Derived,ValueExpr<internal::FixedInt<A> > > operator+(internal::FixedInt<A>) const
   { return AddExpr<Derived,ValueExpr<internal::FixedInt<N> > >(derived(), ValueExpr<internal::FixedInt<N> >()); }
-  template<int N>
-  AddExpr<Derived,ValueExpr<internal::FixedInt<-N> > > operator-(internal::FixedInt<N>) const
+  template<int A>
+  AddExpr<Derived,ValueExpr<internal::FixedInt<-A> > > operator-(internal::FixedInt<A>) const
   { return AddExpr<Derived,ValueExpr<internal::FixedInt<-N> > >(derived(), ValueExpr<internal::FixedInt<-N> >()); }
-  template<int N>
-  ProductExpr<Derived,ValueExpr<internal::FixedInt<N> > > operator*(internal::FixedInt<N>) const
+  template<int A>
+  ProductExpr<Derived,ValueExpr<internal::FixedInt<A> > > operator*(internal::FixedInt<A>) const
   { return ProductExpr<Derived,ValueExpr<internal::FixedInt<N> > >(derived(),ValueExpr<internal::FixedInt<N> >()); }
-  template<int N>
-  QuotientExpr<Derived,ValueExpr<internal::FixedInt<N> > > operator/(internal::FixedInt<N>) const
+  template<int A>
+  QuotientExpr<Derived,ValueExpr<internal::FixedInt<A> > > operator/(internal::FixedInt<A>) const
   { return QuotientExpr<Derived,ValueExpr<internal::FixedInt<N> > >(derived(),ValueExpr<internal::FixedInt<N> >()); }
 
-  template<int N>
-  friend AddExpr<Derived,ValueExpr<internal::FixedInt<N> > > operator+(internal::FixedInt<N>, const BaseExpr& b)
+  template<int A>
+  friend AddExpr<Derived,ValueExpr<internal::FixedInt<A> > > operator+(internal::FixedInt<A>, const BaseExpr& b)
   { return AddExpr<Derived,ValueExpr<internal::FixedInt<N> > >(b.derived(), ValueExpr<internal::FixedInt<N> >()); }
-  template<int N>
-  friend AddExpr<NegateExpr<Derived>,ValueExpr<internal::FixedInt<N> > > operator-(internal::FixedInt<N>, const BaseExpr& b)
+  template<int A>
+  friend AddExpr<NegateExpr<Derived>,ValueExpr<internal::FixedInt<A> > > operator-(internal::FixedInt<A>, const BaseExpr& b)
   { return AddExpr<NegateExpr<Derived>,ValueExpr<internal::FixedInt<N> > >(-b.derived(), ValueExpr<internal::FixedInt<N> >()); }
-  template<int N>
-  friend ProductExpr<ValueExpr<internal::FixedInt<N> >,Derived> operator*(internal::FixedInt<N>, const BaseExpr& b)
+  template<int A>
+  friend ProductExpr<ValueExpr<internal::FixedInt<A> >,Derived> operator*(internal::FixedInt<A>, const BaseExpr& b)
   { return ProductExpr<ValueExpr<internal::FixedInt<N> >,Derived>(ValueExpr<internal::FixedInt<N> >(),b.derived()); }
-  template<int N>
-  friend QuotientExpr<ValueExpr<internal::FixedInt<N> >,Derived> operator/(internal::FixedInt<N>, const BaseExpr& b)
+  template<int A>
+  friend QuotientExpr<ValueExpr<internal::FixedInt<A> >,Derived> operator/(internal::FixedInt<A>, const BaseExpr& b)
   { return QuotientExpr<ValueExpr<internal::FixedInt<N> > ,Derived>(ValueExpr<internal::FixedInt<N> >(),b.derived()); }
 
 #if (!EIGEN_HAS_CXX14)
-  template<int N>
-  AddExpr<Derived,ValueExpr<internal::FixedInt<N> > > operator+(internal::FixedInt<N> (*)()) const
+  template<int A>
+  AddExpr<Derived,ValueExpr<internal::FixedInt<A> > > operator+(internal::FixedInt<A> (*)()) const
   { return AddExpr<Derived,ValueExpr<internal::FixedInt<N> > >(derived(), ValueExpr<internal::FixedInt<N> >()); }
-  template<int N>
-  AddExpr<Derived,ValueExpr<internal::FixedInt<-N> > > operator-(internal::FixedInt<N> (*)()) const
+  template<int A>
+  AddExpr<Derived,ValueExpr<internal::FixedInt<-A> > > operator-(internal::FixedInt<A> (*)()) const
   { return AddExpr<Derived,ValueExpr<internal::FixedInt<-N> > >(derived(), ValueExpr<internal::FixedInt<-N> >()); }
-  template<int N>
-  ProductExpr<Derived,ValueExpr<internal::FixedInt<N> > > operator*(internal::FixedInt<N> (*)()) const
+  template<int A>
+  ProductExpr<Derived,ValueExpr<internal::FixedInt<A> > > operator*(internal::FixedInt<A> (*)()) const
   { return ProductExpr<Derived,ValueExpr<internal::FixedInt<N> > >(derived(),ValueExpr<internal::FixedInt<N> >()); }
-  template<int N>
-  QuotientExpr<Derived,ValueExpr<internal::FixedInt<N> > > operator/(internal::FixedInt<N> (*)()) const
+  template<int A>
+  QuotientExpr<Derived,ValueExpr<internal::FixedInt<A> > > operator/(internal::FixedInt<A> (*)()) const
   { return QuotientExpr<Derived,ValueExpr<internal::FixedInt<N> > >(derived(),ValueExpr<internal::FixedInt<N> >()); }
 
-  template<int N>
-  friend AddExpr<Derived,ValueExpr<internal::FixedInt<N> > > operator+(internal::FixedInt<N> (*)(), const BaseExpr& b)
+  template<int A>
+  friend AddExpr<Derived,ValueExpr<internal::FixedInt<A> > > operator+(internal::FixedInt<A> (*)(), const BaseExpr& b)
   { return AddExpr<Derived,ValueExpr<internal::FixedInt<N> > >(b.derived(), ValueExpr<internal::FixedInt<N> >()); }
-  template<int N>
-  friend AddExpr<NegateExpr<Derived>,ValueExpr<internal::FixedInt<N> > > operator-(internal::FixedInt<N> (*)(), const BaseExpr& b)
+  template<int A>
+  friend AddExpr<NegateExpr<Derived>,ValueExpr<internal::FixedInt<A> > > operator-(internal::FixedInt<A> (*)(), const BaseExpr& b)
   { return AddExpr<NegateExpr<Derived>,ValueExpr<internal::FixedInt<N> > >(-b.derived(), ValueExpr<internal::FixedInt<N> >()); }
-  template<int N>
-  friend ProductExpr<ValueExpr<internal::FixedInt<N> >,Derived> operator*(internal::FixedInt<N> (*)(), const BaseExpr& b)
+  template<int A>
+  friend ProductExpr<ValueExpr<internal::FixedInt<A> >,Derived> operator*(internal::FixedInt<A> (*)(), const BaseExpr& b)
   { return ProductExpr<ValueExpr<internal::FixedInt<N> >,Derived>(ValueExpr<internal::FixedInt<N> >(),b.derived()); }
-  template<int N>
-  friend QuotientExpr<ValueExpr<internal::FixedInt<N> >,Derived> operator/(internal::FixedInt<N> (*)(), const BaseExpr& b)
+  template<int A>
+  friend QuotientExpr<ValueExpr<internal::FixedInt<A> >,Derived> operator/(internal::FixedInt<A> (*)(), const BaseExpr& b)
   { return QuotientExpr<ValueExpr<internal::FixedInt<N> > ,Derived>(ValueExpr<internal::FixedInt<N> >(),b.derived()); }
 #endif
 

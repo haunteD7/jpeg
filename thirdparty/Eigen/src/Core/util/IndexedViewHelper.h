@@ -70,8 +70,8 @@ namespace internal {
  // Replace symbolic last/end "keywords" by their true runtime value
 inline Index eval_expr_given_size(Index x, Index /* size */)   { return x; }
 
-template<int N>
-FixedInt<N> eval_expr_given_size(FixedInt<N> x, Index /*size*/)   { return x; }
+template<int A>
+FixedInt<A> eval_expr_given_size(FixedInt<A> x, Index /*size*/)   { return x; }
 
 template<typename Derived>
 Index eval_expr_given_size(const Symbolic::BaseExpr<Derived> &x, Index size)

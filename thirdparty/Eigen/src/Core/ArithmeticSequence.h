@@ -21,7 +21,7 @@ template<> struct aseq_negate<Index> {
   typedef Index type;
 };
 
-template<int N> struct aseq_negate<FixedInt<N> > {
+template<int A> struct aseq_negate<FixedInt<A> > {
   typedef FixedInt<-N> type;
 };
 
